@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class=" col-md-12">
+            <div class="banner">
+                <div class="banner-text">
+                    <h1>Todo App</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+          <form method ="post" class="p-3 shadow">
+                {% csrf_token %}
+                <h3 class="text-center text-danger" >Add Task </h3>
+                <div class="form-group">
+                    <input type="name" class="form-control" id="name" placeholder="Enter name" name="name">
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type=" priority" class="form-control" id=" priority" placeholder="Enter priority" name="priority">
+                </div>
+              <br>
+                <input type="submit" class="btn btn-primary">
+            </form>
+        </div>
+        <div class="col=md-6">
+            <h4>Task completed</h4>
+            <div class="card">
+
+                <div class="card-body">
+                    <h5 class="card-title"> Task Name</h5>
+                    <p><b>8</b></p>
+                    <a class="btn-btn-danger" href="">Done</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

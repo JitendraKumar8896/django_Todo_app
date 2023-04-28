@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+ <div class="container-fluid">
+    <div class="row">
+        <div class=" col-md-12">
+            <div class="banner">
+                <div class="banner-text">
+                    <h1 class="text-center ">Todo App</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+    <div class="row">
+        <div class="col-center">
+
+          <form method ="post" class="p-3 shadow">
+               <h3 class="text-center text-primary" >Add Task </h3>
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <input type="name" class="form-control" id="name" placeholder="Enter name" name="name">
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type=" priority" class="form-control" id=" priority" placeholder="Enter priority" name="priority">
+                </div>
+               <br>
+              <div class="form-group">
+                    <input type="date" class="form-control" id=" date" placeholder="Enter date" name="date">
+              </div>
+
+
+              <br>
+                <input type="submit" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+ </div>
+<br>
+ <table class="shadow table  table-striped table-bordered table-hover ">
+  <thead class="table-dark " >
+   <tr>
+      <th scope="col">Sr.No.</th>
+      <th scope="col">Name</th>
+      <th scope="col">Priority</th>
+        <th scope="col">date</th>
+        <th scope="col">CRUD Opertions</th>
+    </tr>
+  </thead>
+{% for i in obj1 %}
+<tbody>
+    <tr>
+      <th scope="row">{{i.id}}</th>
+      <td>{{i.name}}</td>
+        <td>{{i.priority}}</td>
+        <td>{{i.date}}</td>
+        <td>
+          <a class="btn btn-danger" href="{% url 'delete' i.id %}">Delete</a>
+          <a class="btn btn-success" href="{% url 'update' i.id %}">Update</a>
+        </td>
+    </tr>
+
+  </tbody>
+  {% endfor %}
+</table>
+
+{% endblock %}
